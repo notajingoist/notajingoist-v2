@@ -4,13 +4,24 @@
 		-webkit-appearance: none;
 	}
 
-	// ::selection {
-	// 	background: $some-color;
-	// }
+	body {
+		background-color: $green;
+		background-image: image-url('bg-square.png');
+		background-repeat: repeat;
+		font-family: Cardo, serif;
+	}
 
-	// ::-moz-selection {
-	// 	background: $some-color;
-	// }
+	p {
+		line-height: 1.2;
+	}
+
+	::selection {
+		background: $ochre;
+	}
+
+	::-moz-selection {
+		background: $ochre;
+	}
 /* @end */
 
 

@@ -5,8 +5,13 @@
 
 /* setup */
 @import 'var';
+@import 'placeholders';
 @import 'mixins';
 @import 'fonts';
 
 /* layout */
 @import 'base';
+@import 'grid';
+
+/* content */
+@import 'content';

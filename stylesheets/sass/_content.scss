@@ -1,0 +1,291 @@
+/* @group bubble */
+	.bubble {
+		//@extend %center-element-horiz;
+		@include center-element($bubble-width, $bubble-height);
+		@include transition(all 0.5s ease-in-out 0);
+		//@include single-transition(box-shadow, 0s, ease-in-out, 0);
+		background: image-url('imkewl.png') center no-repeat;
+		background-size: auto $bubble-height; //must go after background
+		border-radius: 100%;
+		//border: 5px solid $beige;
+		@include box-shadow(
+			-5px 5px 0 0 $beige,
+			-5px -5px 0 0 $sienna,
+			5px -5px 0 0 $brown,
+			5px 5px 0 0 $ochre
+		);
+			
+			
+		cursor: pointer;
+		height: $bubble-height;
+		width: $bubble-width;
+
+		// p {
+		// 	line-height: 1.2;
+		// }
+
+		//@include transform(scale(1));
+
+		.definition {
+			@extend %center-element-horiz;
+			content: '';
+			font-family: Cardo, serif;
+			
+			color: $brown;
+			text-align: center;
+			text-shadow: 0 1px 0 rgba($beige, 0.5);
+			//top: 20px;
+			padding: 3em 4em;
+			text-transform: lowercase;
+
+			.term {
+				display: block;
+				font-weight: 700;
+				font-size: 22px;
+				margin-right: 30px;
+			}
+
+			.pronunciation {
+				font-style: italic;
+				opacity: 0.8;
+				font-size: 14px;
+				display: block;
+				margin-left: 65px;
+				line-height: 1.5;
+				margin-bottom: 0.5em;
+			}
+
+			.meaning {
+				font-size: 16px;
+
+				strong {
+					font-weight: 700;
+				}
+			}
+		}
+
+		&:hover {
+			@include transition(all 0.2s ease-in-out 0);
+			@include box-shadow(
+				-5px 5px 0 0 $brown,
+				-5px -5px 0 0 $ochre,
+				5px -5px 0 0 $beige,
+				5px 5px 0 0 $sienna,
+				0 0 25px 8px rgba($black, 0.3)
+			);
+			@include filter(grayscale(40%));
+
+			.introduction {
+				// color: $beige;
+				// text-shadow: 0 1px 0 rgba($brown, 0.5);
+				// @include transition(all 0.4s ease-in-out 0);
+				@include transform(rotate(-5deg));
+
+				strong {
+					// color: $sienna;
+					// text-shadow: 0 1px 0 rgba($brown, 0.5);
+
+				}
+			}
+
+			.definition {
+				color: rgba($brown, 0.65);
+			}
+
+			//@include box-shadow(0 0 25px 3px rgba($black, 0.3));
+			// @include transform(scale(1.01));
+			// @include bubble-size(1.01, false);
+		}
+
+		.introduction {
+			@include transition(all 0.3s ease-in-out 0);
+			width: 160px;
+			
+			font-style: italic;
+			color: $brown;
+			font-size: 32px;
+			position: absolute;
+			padding-right: 30px;
+			left: -165px; //-160px
+			top: 105px;
+			text-shadow: 0 1px 0 rgba($beige, 0.3);
+			text-align: right;
+			//text-shadow: 0 -1px 10px $sienna;
+			//line-height: 1.2;
+
+			strong {
+				font-style: normal;
+				font-size: 42px;
+				color: $ochre;
+				text-shadow: 0 1px 0 rgba($brown, 0.3);
+			}
+		}
+
+		@include respond-to($mobile) {
+			// @include transition(all 0.5s ease-in-out 0);
+			@include bubble-size(0.8, true);
+			// @include transform(scale(0.8));
+
+			&:hover {
+				// @include transform(scale(0.81));
+				// @include bubble-size(0.81, true);
+			}
+
+			.introduction {
+				text-align: center;
+				top: -80px;
+				left: 0;
+				width: 100%;
+				font-size: 26px;
+				padding: 0;
+
+				strong {
+					font-size: 36px;
+				}
+			}
+			
+			.definition {
+				padding: 2.2em 4em;
+
+				.term {
+					font-size: 16px;
+				}
+
+				.pronunciation {
+					font-size: 12px;
+					//margin-bottom: 0.2em;
+				}
+
+				.meaning {
+					font-size: 13px;
+				}
+			}
+		}
+	}
+/* @end */
+
+/* @group navigation */
+	nav {
+		//@include transition(opacity 0.8s fade-in 0.8s);
+		@include center-element($bubble-width * 0.8, $bubble-height * 0.8);
+		//background: blue;
+		//height: $bubble-height * 0.8;
+		// width: 140px;
+		text-align: left;
+		margin-left: 205px;//190px
+		//z-index: 5;
+		z-index: 1;
+		font-size: 22px;
+		font-style: italic;
+		text-shadow: 0 1px 0 rgba($beige, 0.3);
+		color: $brown;
+		//opacity: 0;
+		//background: blue;
+		ul {
+			width: 100%;
+			li {
+				@include transition(all 0.15s ease-in-out 0);
+				padding: 0.96em 0;
+				cursor: pointer;
+				//background: rgba(red, 0.4);
+				//border: 1px solid $black;
+
+				//width: 100%;
+
+				&:hover {
+					color: $ochre;
+					text-shadow: 0 1px 0 rgba($brown, 0.3);
+					// background: rgba($brown, 1);
+					// border-radius: 10px;
+				}
+
+
+				&:first-child,
+				&:last-child {
+					&:hover {
+						@include transform(rotate(5deg));
+					}
+				}
+
+				&:nth-child(2),
+				&:nth-child(4) {
+					//padding-left: 20px;
+					margin-left: 26px; //28px
+					&:hover {
+						@include transform(rotate(-5deg));
+					}
+				}
+
+				&:nth-child(3) {
+					margin-left: 33px; //35px
+					&:hover {
+						@include transform(rotate(5deg));
+					}
+				}
+			}
+
+			@include respond-to($mobile) {
+				// @include transition(all 0.5s ease-in-out 0);
+				//@include bubble-size(0.8, true);
+				// @include transform(scale(0.8));
+				li {
+					//display: inline-block;
+				}
+
+				background: rgba(blue, 0.4);
+	
+				margin: auto;
+				left: auto;
+				right: auto;
+			}
+
+		}
+	}
+/* @end */
+
+
+
+// .introduction {
+// 	@include center-element($bubble-width, $bubble-height);
+// 	// @include transition(all 0.3s ease-in-out 0);
+// 	width: 160px;
+// 	z-index: 1000;
+// 	font-style: italic;
+// 	color: $brown;
+// 	font-size: 32px;
+// 	//position: absolute;
+// 	// padding-right: 30px;
+// 	// left: -160px;
+// 	// top: 105px;
+// 	margin-left: -380px; 
+// 	margin-top: -90px;
+// 	//background: rgba(red, 0.5);
+// 	text-shadow: 0 1px 0 rgba($beige, 0.3);
+// 	text-align: right;
+// 	//text-shadow: 0 -1px 10px $sienna;
+// 	// line-height: 1.2;
+
+// 	strong {
+// 		font-style: normal;
+// 		font-size: 42px;
+// 		color: $ochre;
+// 		text-shadow: 0 1px 0 rgba($brown, 0.3);
+// 	}
+
+// 	@include respond-to($mobile) {
+// 		.introduction {
+// 			text-align: center;
+// 			top: -80px;
+// 			left: 0;
+// 			width: 100%;
+// 			font-size: 26px;
+// 			padding: 0;
+
+// 			strong {
+// 				font-size: 36px;
+// 			}
+// 		}
+
+// 	}
+// }
+
